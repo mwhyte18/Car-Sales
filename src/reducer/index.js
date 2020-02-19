@@ -24,7 +24,9 @@ export const reducer = (state = initialState, action) => {
       console.log(state);
       return {
         ...state,
-        additionalPrice: state.additionalPrice + action.data.price,
+        additionalPrice: state.car.features.includes(action.data)
+          ? state.additionalPrice
+          : state.additionalPrice + action.data.price,
         car: {
           ...state.car,
           features: state.car.features.includes(action.data)
